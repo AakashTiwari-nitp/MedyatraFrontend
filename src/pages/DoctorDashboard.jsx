@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation, Routes, Route } from 'react-router-dom';
+import NotFound from './NotFound';
 import {
   FaTachometerAlt,
   FaCalendarAlt,
@@ -19,21 +21,22 @@ import Availability from './Availability';
 import AiAssistant from './AiAssistant';
 
 const menuItems = [
-  { label: 'Dashboard', icon: <FaTachometerAlt />, component: Dashboard },
-  { label: 'Appointments', icon: <FaCalendarAlt />, component: Appointments },
-  { label: 'Patients', icon: <FaUsers />, component: Patients },
-  { label: 'Documents', icon: <FaFileAlt />, component: Documents },
-  { label: 'Invoices', icon: <FaReceipt />, component: Invoices },
-  { label: 'Availability', icon: <FaClock />, component: Availability },
-  { label: 'AI Assistant', icon: <FaRobot />, component: AiAssistant },
+  { label: 'Dashboard', icon: <FaTachometerAlt />, path: '/', component: Dashboard },
+  { label: 'Appointments', icon: <FaCalendarAlt />, path: '/appointments', component: Appointments },
+  { label: 'Patients', icon: <FaUsers />, path: '/patients', component: Patients },
+  { label: 'Documents', icon: <FaFileAlt />, path: '/documents', component: Documents },
+  { label: 'Invoices', icon: <FaReceipt />, path: '/invoices', component: Invoices },
+  { label: 'Availability', icon: <FaClock />, path: '/availability', component: Availability },
+  { label: 'AI Assistant', icon: <FaRobot />, path: '/ai-assistant', component: AiAssistant },
 ];
 
 const drawerWidth = 260;
 
 const DoctorDashboard = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const CurrentComponent = menuItems[selectedIndex].component;
+  // console.log('Current Path:', location.pathname); // get the current path
 
   return (
     <div className="flex bg-slate-800 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
@@ -49,13 +52,14 @@ const DoctorDashboard = () => {
           <h1 className="text-xl font-extrabold truncate">MedYatra</h1>
         </div>
 
+        {/* Sidebar Menu */}
         <nav className="flex flex-col flex-grow overflow-y-auto px-2 py-4 space-y-2">
-          {menuItems.map((item, idx) => {
-            const isSelected = idx === selectedIndex;
+          {menuItems.map((item) => {
+            const isSelected = location.pathname === item.path; // if the current path matches the item's path
             return (
               <button
                 key={item.label}
-                onClick={() => setSelectedIndex(idx)}
+                onClick={() => navigate(item.path)} // navigate to the item's path
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 w-full
                   ${isSelected
                     ? 'bg-blue-100 text-blue-900 shadow-md font-semibold'
@@ -69,6 +73,7 @@ const DoctorDashboard = () => {
           })}
         </nav>
 
+        {/* Footer  */}
         <footer className="p-4 text-center text-sm text-blue-700 border-t border-blue-300">
           © {new Date().getFullYear()} MedYatra
         </footer>
@@ -77,10 +82,21 @@ const DoctorDashboard = () => {
       {/* Main content area */}
       <main className="flex-1 p-4 md:p-6 flex justify-center items-start min-h-screen overflow-auto">
         <div className="w-full max-w-7xl bg-white bg-opacity-95 rounded-xl shadow-xl p-6 md:p-10 mt-8">
-          <h2 className="text-3xl font-extrabold mb-6 text-blue-900">
-            {menuItems[selectedIndex].label}
-          </h2>
-          <CurrentComponent />
+          <Routes>
+            {menuItems.map(({ path, component: Component, label }) => (
+              <Route
+                key={path}
+                path={path}
+                element={
+                  <>
+                    <h2 className="text-3xl font-extrabold mb-6 text-blue-900">{label}</h2>
+                    <Component />
+                  </>
+                }
+              />
+            ))}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       </main>
     </div>

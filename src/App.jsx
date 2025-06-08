@@ -1,11 +1,12 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import DoctorDashboard from './pages/DoctorDashboard.jsx'
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <DoctorDashboard />
-    </div>
+    </BrowserRouter>
   )
 }
 
