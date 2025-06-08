@@ -63,3 +63,57 @@
    - Add detailed `README.md` with screenshots and instructions
 
 ---
+
+## 🗓️ Date: 9 June 2025
+
+---
+
+## ✅ Completed Work
+
+1. **Page Navigation System:**
+   - Implemented routing using react-router-dom for dynamic navigation.
+
+2. **Documents Section Features:**
+   - Used a dummy JSON array to simulate document entries.
+   - Designed a modal for “View Document.”
+   - Created document cards displaying:
+     - Document name, type (PDF, DOCX), patient name, and avatar.
+     - Timestamps and action buttons (View, Download, Ask AI).
+
+3. **Deployment & Visibility:**
+   - Deployed the project on Vercel.
+---
+
+## ⚠️ Current Challenges
+
+1. **Documents Section Features:**
+   - Implementing:
+     - Search by name/keyword
+     - Sort by latest/oldest
+     - Category tabs (All, Lab Results, Imaging, Prescriptions, etc.)
+   - Ensuring **animations on hover and card expansion** using Tailwind utilities
+
+2. **Responsiveness & Interactions:**
+   - Managing card responsiveness across mobile/tablet/desktop
+   - Adding smooth hover, tap, and transition effects
+
+---
+## 🔜 Next Steps
+
+1. **Build Document Card Functionality:**
+   - Implement search, category filtering, and sorting logic
+   - Render responsive and animated cards with required data
+
+2. **UI/UX Enhancements:**
+   - Add hover animations using `transition`, `scale`, `shadow`, etc.
+   - Polish layout spacing, alignment, and mobile breakpoints
+
+3. **Bonus Features:**
+   - Floating action button (FAB) for quick upload or scroll-to-top
+   - Theme toggle (Light/Dark)
+   - Search keyword highlighting
+
+4. **Final Submission Prep:**
+   - Add detailed `README.md` with screenshots and instructions
+
+---

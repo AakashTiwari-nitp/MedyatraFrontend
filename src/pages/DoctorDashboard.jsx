@@ -80,8 +80,8 @@ const DoctorDashboard = () => {
       </aside>
 
       {/* Main content area */}
-      <main className="flex-1 p-4 md:p-6 flex justify-center items-start min-h-screen overflow-auto">
-        <div className="w-full max-w-7xl bg-white bg-opacity-95 rounded-xl shadow-xl p-6 md:p-10 mt-8">
+      <main className="flex-1 flex justify-center items-start min-h-screen overflow-auto">
+        <div className="w-full max-w-7xl bg-white bg-opacity-95 rounded-xl min-h-screen shadow-xl p-6 md:p-10">
           <Routes>
             {menuItems.map(({ path, component: Component, label }) => (
               <Route
@@ -89,7 +89,7 @@ const DoctorDashboard = () => {
                 path={path}
                 element={
                   <>
-                    <h2 className="text-3xl font-extrabold mb-6 text-blue-900">{label}</h2>
+                    <h2 className="text-3xl m-2 font-extrabold mb-6 text-blue-900">{label}</h2>
                     <Component />
                   </>
                 }
