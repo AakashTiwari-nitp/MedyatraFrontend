@@ -193,7 +193,8 @@ const docs = [
 
 const Documents = () => {
   return (
-    <div className="bg-white rounded-lg shadow-md px-6">
+    <div className="bg-white rounded-lg shadow-md p-6">
+      <h2 className="text-2xl font-semibold mb-4">Documents</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 p-4">
         {docs.map(doc => (
           <DocumentCard key={doc.id} doc={doc} />
