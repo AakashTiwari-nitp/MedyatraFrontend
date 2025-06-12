@@ -277,50 +277,53 @@ const Documents = () => {
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white rounded-lg shadow-md md:p-6 py-6">
       <h2 className="text-2xl font-semibold mb-4">Documents</h2>
 
-      {/* Search Options */}
-      <div className="flex items-center gap-4 mb-4">
-        <div>
-          <h2 className='inline-block font-bold px-4'>Search By</h2>
-          <select name="search" onChange={(e) => {
-            setSearchBy(e.target.value);
+      <div className="flex lg:flex-row flex-col gap-2 mb-4">
+        {/* Search Options */}
+        <div className='flex flex-col min-[450px]:flex-row gap-2 md:gap-0 items-center w-full md:w-auto'>
+          <div className='w-full'>
+            <h2 className='inline-block font-bold px-4 text-nowrap'>Search By</h2>
+            <select name="search" onChange={(e) => {
+              setSearchBy(e.target.value);
 
-          }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus:outline-none">
-            <option value="all">All</option>
-            <option value="name">Document Name</option>
-            <option value="patient">Patient Name</option>
-            <option value="type">Document Type</option>
-          </select>
+            }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus:outline-none">
+              <option value="all">All</option>
+              <option value="name">Document Name</option>
+              <option value="patient">Patient Name</option>
+              <option value="type">Document Type</option>
+            </select>
+          </div>
+          <div className='w-full'>
+            <h2 className='inline-block font-bold px-4 text-nowrap'>Sort By</h2>
+            <select name="search" onChange={(e) => {
+              setSortBy(e.target.value);
+            }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus:outline-none">
+              <option value="nameAsc">Document Name (A-Z)</option>
+              <option value="nameDec">Document Name (Z-A)</option>
+              <option value="patientAsc">Patient Name (A-Z)</option>
+              <option value="patientDec">Patient Name (Z-A)</option>
+              <option value="dateAsc">Date (Oldest)</option>
+              <option value="dateDec">Date (Newest)</option>
+              <option value="sizeAsc">Size (Smallest)</option>
+              <option value="sizeDec">Size (Largest)</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <h2 className='inline-block font-bold px-4'>Sort By</h2>
-          <select name="search" onChange={(e) => {
-            setSortBy(e.target.value);
-          }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus:outline-none">
-            <option value="nameAsc">Document Name (A-Z)</option>
-            <option value="nameDec">Document Name (Z-A)</option>
-            <option value="patientAsc">Patient Name (A-Z)</option>
-            <option value="patientDec">Patient Name (Z-A)</option>
-            <option value="dateAsc">Date (Oldest)</option>
-            <option value="dateDec">Date (Newest)</option>
-            <option value="sizeAsc">Size (Smallest)</option>
-            <option value="sizeDec">Size (Largest)</option>
-          </select>
+
+        {/* Search Button */}
+        <div className="mt-4 ml-4 flex w-[90%] lg:w-[75%] items-center border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus-within:border-blue-500">
+          <CiSearch className="text-xl text-amber-900 ml-2" />
+          <input
+            type="text"
+            className="w-full px-3 py-2 text-black bg-transparent focus:outline-none rounded-md"
+            placeholder="Search Document..."
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
 
-      {/* Search Button */}
-      <div className="mt-4 ml-4 flex w-[75%] items-center border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus-within:border-blue-500">
-        <CiSearch className="text-2xl text-amber-900 ml-2" />
-        <input
-          type="text"
-          className="w-full px-3 py-2 text-black bg-transparent focus:outline-none rounded-md"
-          placeholder="Search Document..."
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
 
 
       {/* Cards */}
@@ -371,7 +374,7 @@ const DocumentCard = ({ doc }) => {
         {!!doc.title ? (
           <div className="flex items-center gap-2">
             <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
-            <h3 className="text-xl font-semibold text-black truncate">{doc.title}</h3>
+            <h3 className="text-xl font-semibold text-black truncate text-wrap">{doc.title}</h3>
           </div>
         ) : (
           <h3 className="text-xl font-bold text-blue-800">Medical Report</h3>
@@ -393,7 +396,7 @@ const DocumentCard = ({ doc }) => {
 
         {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600'>Updated: {formatDate(doc.updatedAt)}</h3>}
 
-        <div className="flex gap-2 mt-4 justify-around text-sm font-medium">
+        <div className="flex flex-col min-[400px]:flex-row gap-2 mt-4 justify-around text-sm font-medium">
           {!!doc.previewUrl &&
             (<button
               onClick={() => setIsViewerOpen(true)}
