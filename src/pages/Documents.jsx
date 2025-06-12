@@ -277,7 +277,7 @@ const Documents = () => {
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-md md:p-6 py-6">
+    <div className="bg-white dark:bg-gray-700 dark:text-white rounded-lg shadow-md md:p-6 py-6 px-2">
       <h2 className="text-2xl font-semibold mb-4">Documents</h2>
 
       <div className="flex lg:flex-row flex-col gap-2 mb-4">
@@ -285,21 +285,26 @@ const Documents = () => {
         <div className='flex flex-col min-[450px]:flex-row gap-2 md:gap-0 items-center w-full md:w-auto'>
           <div className='w-full'>
             <h2 className='inline-block font-bold px-4 text-nowrap'>Search By</h2>
-            <select name="search" onChange={(e) => {
-              setSearchBy(e.target.value);
-
-            }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus:outline-none">
+            <select
+              name="search"
+              id="search"
+              onChange={(e) => setSearchBy(e.target.value)}
+              className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md transition-all focus:outline-none focus:border-blue-500 
+               dark:bg-slate-700 dark:text-white"
+            >
               <option value="all">All</option>
               <option value="name">Document Name</option>
               <option value="patient">Patient Name</option>
               <option value="type">Document Type</option>
             </select>
           </div>
+
           <div className='w-full'>
             <h2 className='inline-block font-bold px-4 text-nowrap'>Sort By</h2>
             <select name="search" onChange={(e) => {
               setSortBy(e.target.value);
-            }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus:outline-none">
+            }} id="search" className="ml-2 px-3 py-2 border-2 border-slate-200 rounded-md transition-all focus:outline-none focus:border-blue-500 
+               dark:bg-slate-700 dark:text-white">
               <option value="nameAsc">Document Name (A-Z)</option>
               <option value="nameDec">Document Name (Z-A)</option>
               <option value="patientAsc">Patient Name (A-Z)</option>
@@ -313,11 +318,11 @@ const Documents = () => {
         </div>
 
         {/* Search Button */}
-        <div className="mt-4 ml-4 flex w-[90%] lg:w-[75%] items-center border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus-within:border-blue-500">
-          <CiSearch className="text-xl text-amber-900 ml-2" />
+        <div className="mt-4 ml-4 flex w-[90%] lg:w-[75%] items-center text-black dark:text-white border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus-within:border-blue-500">
+          <CiSearch className="text-xl text-amber-900 dark:text-slate-100  ml-2" />
           <input
             type="text"
-            className="w-full px-3 py-2 text-black bg-transparent focus:outline-none rounded-md"
+            className="w-full px-3 py-2 bg-transparent focus:outline-none rounded-md"
             placeholder="Search Document..."
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -370,19 +375,19 @@ const DocumentCard = ({ doc }) => {
   return (
     <>
       {/* Card */}
-      <div className="bg-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
+      <div className="bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
         {!!doc.title ? (
           <div className="flex items-center gap-2">
             <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
-            <h3 className="text-xl font-semibold text-black truncate text-wrap">{doc.title}</h3>
+            <h3 className="text-xl font-semibold text-black dark:text-white truncate text-wrap">{doc.title}</h3>
           </div>
         ) : (
-          <h3 className="text-xl font-bold text-blue-800">Medical Report</h3>
+          <h3 className="text-xl font-bold text-blue-800 dark:text-white">Medical Report</h3>
         )}
 
         <div className="mt-2 flex items-center gap-2 text-sm text-gray-700">
           {!!doc.type && <span className="bg-gray-200 px-2 py-1 rounded-md uppercase">{doc.type}</span>}
-          {!!doc.size && <span className="text-black">{doc.size}</span>}
+          {!!doc.size && <span className="text-black dark:text-white">{doc.size}</span>}
         </div>
 
         {!!doc.patient && (
@@ -394,7 +399,7 @@ const DocumentCard = ({ doc }) => {
           </div>
         )}
 
-        {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600'>Updated: {formatDate(doc.updatedAt)}</h3>}
+        {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600 dark:text-slate-300'>Updated: {formatDate(doc.updatedAt)}</h3>}
 
         <div className="flex flex-col min-[400px]:flex-row gap-2 mt-4 justify-around text-sm font-medium">
           {!!doc.previewUrl &&

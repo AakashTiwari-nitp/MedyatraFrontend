@@ -20,10 +20,10 @@ const NotFound = () => {
     }, [navigate]);
 
     return (
-        <div className="flex flex-col items-center justify-center h-full text-center space-y-6 py-20">
-            <h1 className="text-6xl font-bold text-blue-900">404</h1>
-            <p className="text-xl text-blue-700">Oops! Page not found.</p>
-            <p className="text-sm text-gray-500">
+        <div className="flex flex-col items-center dark:bg-slate-700 min-h-screen justify-center h-full text-center space-y-6 py-20">
+            <h1 className="text-6xl font-bold text-blue-900 dark:text-blue-100">404</h1>
+            <p className="text-xl text-blue-700 dark:text-blue-300">Oops! Page not found.</p>
+            <p className="text-sm text-gray-500 dark:text-gray-300">
                 You will be automatically redirected to home page in <span className="font-semibold">{countdown}</span> second{countdown !== 1 && 's'}...
             </p>
             <button
