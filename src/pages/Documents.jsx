@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { FaEye, FaDownload, FaTimes, FaFilePdf, FaFileImage } from "react-icons/fa";
 import { RiRobot3Line } from "react-icons/ri";
 import { MdOutlineDocumentScanner } from "react-icons/md";
@@ -145,9 +145,9 @@ const docs = [
       analysis: ["No arrhythmia or abnormalities noted."],
       recommendations: ["Routine follow-up after 6 months."]
     },
-    url: "https://example.com/file/7",
-    previewUrl: "https://example.com/preview/7",
-    size: "175 KB",
+    url: "https://drive.google.com/file/d/11UcHiRKANBUZXGusw8lm6h6QW77EEIzp/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/11UcHiRKANBUZXGusw8lm6h6QW77EEIzp/preview",
+    size: "138 KB",
     updatedAt: "2025-05-15T00:00:00"
   },
   {
@@ -162,9 +162,9 @@ const docs = [
       analysis: ["Mild myopia in left eye."],
       recommendations: ["Prescription glasses recommended."]
     },
-    url: "https://example.com/file/8",
-    previewUrl: "https://example.com/preview/8",
-    size: "120 KB",
+    url: "https://drive.google.com/file/d/12Tc6MsZdNEkPOeK6ZiaNNsCgzlGRwv5f/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/12Tc6MsZdNEkPOeK6ZiaNNsCgzlGRwv5f/preview",
+    size: "453 KB",
     updatedAt: "2025-06-03T00:00:00"
   },
   {
@@ -181,9 +181,9 @@ const docs = [
       analysis: ["Suggestive of subclinical hypothyroidism."],
       recommendations: ["Monitor every 3 months.", "Consider endocrinologist consult."]
     },
-    url: "https://example.com/file/9",
-    previewUrl: "https://example.com/preview/9",
-    size: "201 KB",
+    url: "https://docs.google.com/document/d/1zU9uE-cyn57P-oKK9WwEv_pTLZWzwHCz/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/1zU9uE-cyn57P-oKK9WwEv_pTLZWzwHCz/preview",
+    size: "17 KB",
     updatedAt: "2025-06-06T00:00:00"
   },
   {
@@ -201,9 +201,9 @@ const docs = [
       analysis: ["Healthy hematologic profile."],
       recommendations: ["Maintain hydration.", "Routine annual checkup."]
     },
-    url: "https://example.com/file/10",
-    previewUrl: "https://example.com/preview/10",
-    size: "230 KB",
+    url: "https://drive.google.com/file/d/1LAGziFTmffXY398ekJqUzba73s5RcD5Q/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/1LAGziFTmffXY398ekJqUzba73s5RcD5Q/preview",
+    size: "454 KB",
     updatedAt: "2025-05-30T00:00:00"
   },
   {
@@ -218,9 +218,9 @@ const docs = [
       analysis: ["Grade 1 fatty liver.", "Other organs appear normal."],
       recommendations: ["Lifestyle modification.", "Low-fat diet."]
     },
-    url: "https://example.com/file/11",
-    previewUrl: "https://example.com/preview/11",
-    size: "345 KB",
+    url: "https://drive.google.com/file/d/18XfMAkxMmaMZN8Dt_RDQsgnui7v8sLeT/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/18XfMAkxMmaMZN8Dt_RDQsgnui7v8sLeT/preview",
+    size: "150 KB",
     updatedAt: "2025-06-02T00:00:00"
   }
 ];
@@ -230,6 +230,8 @@ const Documents = () => {
   const [searchBy, setSearchBy] = useState("all");
   const [sortBy, setSortBy] = useState("nameAsc");
   const [categoryBy, setCategoryBy] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   // console.log(filteredDocs);
   // console.log(searchBy);
@@ -286,10 +288,20 @@ const Documents = () => {
     sortByOptions[sortBy] || sortByOptions.date // Default to date sorting if no sortBy is selected
   );
 
+  const totalPages = Math.ceil(filteredDocs.length / itemsPerPage);
+  const indexOfLastDoc = currentPage * itemsPerPage;
+  const indexOfFirstDoc = indexOfLastDoc - itemsPerPage;
+  const currentDocs = filteredDocs.slice(indexOfFirstDoc, indexOfLastDoc);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, searchBy, sortBy, categoryBy]);
+
   return (
     <div className="bg-white dark:bg-gray-700 dark:text-white rounded-lg shadow-md md:p-6 py-6 px-2">
       <h2 className="text-2xl font-semibold mb-4">Documents</h2>
 
+      {/* Sort and Search Filter */}
       <div className="flex lg:flex-row flex-col gap-2 mb-4">
         {/* Search Options */}
         <div className='flex flex-col min-[450px]:flex-row gap-2 md:gap-0 items-center w-full md:w-auto'>
@@ -328,7 +340,7 @@ const Documents = () => {
         </div>
 
         {/* Search Button */}
-        <div className="mt-4 ml-4 flex w-[90%] lg:w-[75%] items-center text-black dark:text-white border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus-within:border-blue-500">
+        <div className="mt-4 ml-2 flex w-[90%] lg:w-[75%] items-center text-black dark:text-white border-2 border-slate-200 rounded-md focus:border-blue-500 transition-all focus-within:border-blue-500">
           <CiSearch className="text-xl text-amber-900 dark:text-slate-100  ml-2" />
           <input
             type="text"
@@ -340,15 +352,15 @@ const Documents = () => {
       </div>
 
       {/* Category Filter */}
-      <div className="rounded-md px-1 py-1 dark:bg-slate-700 w-fit">
+      <div className="rounded-md px-1 py-1 w-full dark:bg-gray-700 md:w-fit">
         {/* Tabs */}
-        <div className="flex space-x-4">
+        <div className="flex flex-col min-[500px]:flex-row space-x-4">
           {categories.map((cat) => (
             <button
               key={cat}
               className={`px-4 py-2 rounded-lg ${categoryBy === cat
-                  ? "dark:bg-slate-800 bg-slate-300 text-black dark:text-white"
-                  : "text-gray-800 dark:text-gray-100"
+                ? "dark:bg-slate-800 bg-slate-300 text-black dark:text-white"
+                : "text-gray-800 dark:text-gray-100"
                 } transition-all duration-300`}
               onClick={() => setCategoryBy(cat)}
             >
@@ -359,198 +371,234 @@ const Documents = () => {
       </div>
 
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-1 py-4">
-          {filteredDocs.length > 0 ? (filteredDocs.map(doc => (
+      {/* Cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-1 py-4">
+        {currentDocs.length > 0 ? (
+          currentDocs.map((doc) => (
             <DocumentCard key={doc.id} doc={doc} />
-          ))) : (<div className="text-center py-10 col-span-full">
+          ))
+        ) : (
+          <div className="text-center py-10 col-span-full">
             <h3 className="mt-2 text-lg font-medium">No such documents found.</h3>
-          </div>)}
-        </div>
+          </div>
+        )}
       </div>
-      );
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-4">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-600 disabled:opacity-50"
+          >
+            Prev
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`px-3 py-1 rounded ${currentPage === i + 1
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 dark:bg-gray-600"
+                }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-600 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </div>
+  );
 };
 
 
-      const iconMap = {
-        pdf: <FaFilePdf />,
-      docx: <MdOutlineDocumentScanner />,
-      png: <FaFileImage />,
-      jpeg: <FaFileImage />,
-      jpg: <FaFileImage />,
-      default: <MdOutlineDocumentScanner />
+const iconMap = {
+  pdf: <FaFilePdf />,
+  docx: <MdOutlineDocumentScanner />,
+  png: <FaFileImage />,
+  jpeg: <FaFileImage />,
+  jpg: <FaFileImage />,
+  default: <MdOutlineDocumentScanner />
 };
 
-      const DocumentCard = ({doc}) => {
+const DocumentCard = ({ doc }) => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-      const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
+  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
-      const avatar = doc.patient
-      .split(" ")
+  const avatar = doc.patient
+    .split(" ")
     .map((name) => name[0].toUpperCase())
-      .join("");
+    .join("");
 
-      // format date in dd mm yyyy format
-      function formatDate(isoString) {
+  // format date in dd mm yyyy format
+  function formatDate(isoString) {
     const date = new Date(isoString);
-      const day = String(date.getDate()).padStart(2, '0');      // 2-digit day
-      const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-      const year = date.getFullYear();
+    const day = String(date.getDate()).padStart(2, '0');      // 2-digit day
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const year = date.getFullYear();
 
-      return `${day}-${month}-${year}`;
+    return `${day}-${month}-${year}`;
   }
 
-      return (
-      <>
-        {/* Card */}
-        <div className="bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
-          {!!doc.title ? (
-            <div className="flex items-center gap-2">
-              <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
-              <h3 className="text-xl font-semibold text-black dark:text-white truncate text-wrap">{doc.title}</h3>
-            </div>
-          ) : (
-            <h3 className="text-xl font-bold text-blue-800 dark:text-white">Medical Report</h3>
-          )}
-
-          <div className="mt-2 flex items-center gap-2 text-sm text-gray-700">
-            {!!doc.type && <span className="bg-gray-200 px-2 py-1 rounded-md uppercase">{doc.type}</span>}
-            {!!doc.size && <span className="text-black dark:text-white">{doc.size}</span>}
+  return (
+    <>
+      {/* Card */}
+      <div className="bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
+        {!!doc.title ? (
+          <div className="flex items-center gap-2">
+            <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
+            <h3 className="text-xl font-semibold text-black dark:text-white truncate text-wrap">{doc.title}</h3>
           </div>
+        ) : (
+          <h3 className="text-xl font-bold text-blue-800 dark:text-white">Medical Report</h3>
+        )}
 
-          {!!doc.patient && (
-            <div className="flex items-center gap-3 mt-2">
-              <div className="w-10 h-10 bg-blue-100 text-blue-800 font-bold rounded-full flex items-center justify-center">
-                {avatar}
-              </div>
-              <span className="text-md font-medium">{doc.patient}</span>
-            </div>
-          )}
-
-          {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600 dark:text-slate-300'>Updated: {formatDate(doc.updatedAt)}</h3>}
-
-          <div className="flex flex-col min-[400px]:flex-row gap-2 mt-4 justify-around text-sm font-medium">
-            {!!doc.previewUrl &&
-              (<button
-                onClick={() => setIsViewerOpen(true)}
-                className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-              >
-                <FaEye /> View
-              </button>)
-            }
-
-            {!!doc.url && (
-              <button
-                onClick={() => window.open(doc.url, "_blank", "noopener,noreferrer")}
-                className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-              >
-                <FaDownload className="inline-block" />
-                Download
-              </button>
-            )}
-
-            {!!doc.aiSummary && (
-              <button
-                onClick={() => setIsAIAssistantOpen(true)}
-                className="flex items-center gap-1 px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">
-                <RiRobot3Line /> Ask AI
-              </button>
-            )}
-          </div>
+        <div className="mt-2 flex items-center gap-2 text-sm text-gray-700">
+          {!!doc.type && <span className="bg-gray-200 px-2 py-1 rounded-md uppercase">{doc.type}</span>}
+          {!!doc.size && <span className="text-black dark:text-white">{doc.size}</span>}
         </div>
 
-        {/* Viewer Modal */}
-        {isViewerOpen && (
+        {!!doc.patient && (
+          <div className="flex items-center gap-3 mt-2">
+            <div className="w-10 h-10 bg-blue-100 text-blue-800 font-bold rounded-full flex items-center justify-center">
+              {avatar}
+            </div>
+            <span className="text-md font-medium">{doc.patient}</span>
+          </div>
+        )}
+
+        {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600 dark:text-slate-300'>Updated: {formatDate(doc.updatedAt)}</h3>}
+
+        <div className="flex flex-col min-[400px]:flex-row gap-2 mt-4 justify-around text-sm font-medium">
+          {!!doc.previewUrl &&
+            (<button
+              onClick={() => setIsViewerOpen(true)}
+              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
+              <FaEye /> View
+            </button>)
+          }
+
+          {!!doc.url && (
+            <button
+              onClick={() => window.open(doc.url, "_blank", "noopener,noreferrer")}
+              className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+            >
+              <FaDownload className="inline-block" />
+              Download
+            </button>
+          )}
+
+          {!!doc.aiSummary && (
+            <button
+              onClick={() => setIsAIAssistantOpen(true)}
+              className="flex items-center gap-1 px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">
+              <RiRobot3Line /> Ask AI
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Viewer Modal */}
+      {isViewerOpen && (
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg w-[90%] max-w-5xl h-[80vh] overflow-hidden shadow-xl flex flex-col relative">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-lg font-bold text-gray-800">Document Preview</h2>
+              <button
+                onClick={() => setIsViewerOpen(false)}
+                className="text-gray-500 hover:text-red-600 text-lg"
+              >
+                <FaTimes />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              {!!doc.url && (
+                <iframe
+                  src={doc.previewUrl}
+                  className="w-full h-full"
+                ></iframe>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* AI Assistant */}
+      {
+        isAIAssistantOpen && (
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg w-[90%] max-w-5xl h-[80vh] overflow-hidden shadow-xl flex flex-col relative">
+            <div className="bg-white rounded-lg w-[90%] max-w-3xl max-h-screen h-fit overflow-y-auto shadow-xl flex flex-col relative">
               <div className="flex justify-between items-center p-4 border-b">
-                <h2 className="text-lg font-bold text-gray-800">Document Preview</h2>
+                <h2 className="text-lg font-bold text-gray-800">AI Assistant</h2>
                 <button
-                  onClick={() => setIsViewerOpen(false)}
+                  onClick={() => setIsAIAssistantOpen(false)}
                   className="text-gray-500 hover:text-red-600 text-lg"
                 >
                   <FaTimes />
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto">
-                {!!doc.url && (
-                  <iframe
-                    src={doc.previewUrl}
-                    className="w-full h-full"
-                  ></iframe>
+              <div className="flex-1 p-4 overflow-y-auto">
+                {!!doc.aiSummary.overview && <p className="text-gray-700 mb-2">{doc.aiSummary.overview}</p>}
+
+                {doc.aiSummary.vitals?.length > 0 && (
+                  <>
+                    <h3 className="font-semibold mb-1 text-gray-700">Vitals:</h3>
+                    <ul className="list-disc pl-5 mb-4">
+                      {doc.aiSummary.vitals.map((vital, index) => {
+                        const status = vital.status.toLowerCase(); // Normalize casing
+                        let textColor = "text-gray-700";
+
+                        if (status === "high") textColor = "text-red-600 font-semibold";
+                        else if (status === "low") textColor = "text-blue-600 font-semibold";
+                        else if (status === "normal") textColor = "text-black font-medium";
+
+                        return (
+                          <li key={index} className={textColor}>
+                            {vital.name}: {vital.value} ({vital.status})
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
+                )}
+
+                {doc.aiSummary.analysis?.length > 0 && (
+                  <>
+                    <h3 className="font-semibold mb-1 text-gray-700">Analysis:</h3>
+                    <ul className="list-disc pl-5 mb-4 text-black">
+                      {doc.aiSummary.analysis.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                {doc.aiSummary.recommendations?.length > 0 && (
+                  <>
+                    <h3 className="font-semibold mb-1 text-gray-700">Recommendations:</h3>
+                    <ol className="list-decimal pl-5 text-black">
+                      {doc.aiSummary.recommendations.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ol>
+                  </>
                 )}
               </div>
             </div>
           </div>
-        )}
-
-        {/* AI Assistant */}
-        {
-          isAIAssistantOpen && (
-            <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-              <div className="bg-white rounded-lg w-[90%] max-w-3xl max-h-screen h-fit overflow-y-auto shadow-xl flex flex-col relative">
-                <div className="flex justify-between items-center p-4 border-b">
-                  <h2 className="text-lg font-bold text-gray-800">AI Assistant</h2>
-                  <button
-                    onClick={() => setIsAIAssistantOpen(false)}
-                    className="text-gray-500 hover:text-red-600 text-lg"
-                  >
-                    <FaTimes />
-                  </button>
-                </div>
-                <div className="flex-1 p-4 overflow-y-auto">
-                  {!!doc.aiSummary.overview && <p className="text-gray-700 mb-2">{doc.aiSummary.overview}</p>}
-
-                  {doc.aiSummary.vitals?.length > 0 && (
-                    <>
-                      <h3 className="font-semibold mb-1 text-gray-700">Vitals:</h3>
-                      <ul className="list-disc pl-5 mb-4">
-                        {doc.aiSummary.vitals.map((vital, index) => {
-                          const status = vital.status.toLowerCase(); // Normalize casing
-                          let textColor = "text-gray-700";
-
-                          if (status === "high") textColor = "text-red-600 font-semibold";
-                          else if (status === "low") textColor = "text-blue-600 font-semibold";
-                          else if (status === "normal") textColor = "text-black font-medium";
-
-                          return (
-                            <li key={index} className={textColor}>
-                              {vital.name}: {vital.value} ({vital.status})
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </>
-                  )}
-
-                  {doc.aiSummary.analysis?.length > 0 && (
-                    <>
-                      <h3 className="font-semibold mb-1 text-gray-700">Analysis:</h3>
-                      <ul className="list-disc pl-5 mb-4 text-black">
-                        {doc.aiSummary.analysis.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-
-                  {doc.aiSummary.recommendations?.length > 0 && (
-                    <>
-                      <h3 className="font-semibold mb-1 text-gray-700">Recommendations:</h3>
-                      <ol className="list-decimal pl-5 text-black">
-                        {doc.aiSummary.recommendations.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ol>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-          )
-        }
-      </>
-      );
+        )
+      }
+    </>
+  );
 };
 
-      export default Documents;
+export default Documents;

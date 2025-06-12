@@ -8,7 +8,8 @@ import {
   FaReceipt,
   FaClock,
   FaRobot,
-  FaMoon
+  FaMoon,
+  FaAngleUp
 } from 'react-icons/fa';
 import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io"
@@ -186,6 +187,15 @@ const DoctorDashboard = () => {
           <Outlet />
         </div>
       </main>
+
+      {/* Page up */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-4 right-4 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300"
+        aria-label="Scroll to top"
+      >
+        <FaAngleUp size={24} />
+      </button>
     </div>
   );
 };
