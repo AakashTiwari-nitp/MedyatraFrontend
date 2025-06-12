@@ -63,10 +63,10 @@ const DoctorDashboard = () => {
   // console.log(isDark)
 
   return (
-    <div className="flex dark:bg-slate-800 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-800">
+    <div className="flex bg-black dark:bg-slate-800 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-800">
       {/* Mobile Toggle Button */}
       <div className="md:hidden p-4">
-        <button onClick={toggleSidebar} className='sticky top-5 z-50 flex items-center justify-center w-10 h-10 text-white rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110'>
+        <button onClick={toggleSidebar} className='sticky top-5 z-50 flex items-center justify-center w-10 h-10 text-black dark:text-white rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110'>
           {!isOpen && <CiMenuBurger size={28} />}
         </button>
         <nav className="flex flex-col fixed flex-grow overflow-y-auto dark:bg-gray-750 py-4 gap-5">

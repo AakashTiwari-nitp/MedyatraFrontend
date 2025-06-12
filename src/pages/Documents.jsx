@@ -6,35 +6,35 @@ import { CiSearch } from "react-icons/ci";
 
 const docs = [
   {
-    "id": 1,
-    "title": "Medical Report of Anuj",
-    "type": "pdf",
-    "patient": "Anuj Pratap",
-    "category": "reports",
-    "aiSummary": {
-      "overview": "Health report of Anuj showing key metrics and observations.",
-      "vitals": [
-        { "name": "Hemoglobin", "value": "15.1 g/dL", "normalRange": "13–17 g/dL", "status": "Normal" },
-        { "name": "WBC Count", "value": "6,200 /μL", "normalRange": "4,000–11,000 /μL", "status": "Normal" },
-        { "name": "Platelet Count", "value": "200,000 /μL", "normalRange": "150,000–450,000 /μL", "status": "Normal" },
-        { "name": "Blood Sugar (Fasting)", "value": "95 mg/dL", "normalRange": "70–100 mg/dL", "status": "Normal" },
-        { "name": "Cholesterol (Total)", "value": "205 mg/dL", "normalRange": "< 200 mg/dL", "status": "High" }
+    id: 1,
+    title: "Medical Report of Anuj",
+    type: "pdf",
+    patient: "Anuj Pratap",
+    category: "results",
+    aiSummary: {
+      overview: "Health report of Anuj showing key metrics and observations.",
+      vitals: [
+        { name: "Hemoglobin", value: "15.1 g/dL", normalRange: "13–17 g/dL", status: "Normal" },
+        { name: "WBC Count", value: "6,200 /μL", normalRange: "4,000–11,000 /μL", status: "Normal" },
+        { name: "Platelet Count", value: "200,000 /μL", normalRange: "150,000–450,000 /μL", status: "Normal" },
+        { name: "Blood Sugar (Fasting)", value: "95 mg/dL", normalRange: "70–100 mg/dL", status: "Normal" },
+        { name: "Cholesterol (Total)", value: "205 mg/dL", normalRange: "< 200 mg/dL", status: "High" }
       ],
-      "analysis": [
+      analysis: [
         "Values indicate no immediate critical health concern.",
         "Further evaluation might be needed for borderline results.",
         "Overall, patient is stable based on current data."
       ],
-      "recommendations": [
+      recommendations: [
         "Repeat test in 2 weeks.",
         "Maintain a balanced diet.",
         "Consult a specialist if symptoms persist."
       ]
     },
-    "url": "https://drive.google.com/file/d/1hpWcmIXJLV9q0iyKMDw4VPNYFmQQkonJ/view?usp=drive_link",
-    "previewUrl": "https://drive.google.com/file/d/1hpWcmIXJLV9q0iyKMDw4VPNYFmQQkonJ/preview",
-    "size": "196 KB",
-    "updatedAt": "2025-06-04T00:00:00"
+    url: "https://drive.google.com/file/d/1hpWcmIXJLV9q0iyKMDw4VPNYFmQQkonJ/view?usp=drive_link",
+    previewUrl: "https://drive.google.com/file/d/1hpWcmIXJLV9q0iyKMDw4VPNYFmQQkonJ/preview",
+    size: "196 KB",
+    updatedAt: "2025-06-04T00:00:00"
   },
   {
     id: 2,
@@ -54,17 +54,17 @@ const docs = [
         "Use prescribed nasal sprays."
       ]
     },
-    url: "https://example.com/file/2",
-    previewUrl: "https://example.com/preview/2",
-    size: "340 KB",
-    updatedAt: "2025-05-27T00:00:00"
+    url: "https://drive.google.com/file/d/1z6Mdl_OT11zF7GozE9QbNh07Ae-KoPIK/view?usp=drive_link",
+    previewUrl: "https://drive.google.com/file/d/1z6Mdl_OT11zF7GozE9QbNh07Ae-KoPIK/preview",
+    size: "74 KB",
+    updatedAt: "2025-05-07T00:00:00"
   },
   {
     id: 3,
     title: "Blood Report of Rahul",
     type: "pdf",
     patient: "Rahul Verma",
-    category: "reports",
+    category: "results",
     aiSummary: {
       overview: "Routine blood test with slightly elevated cholesterol.",
       vitals: [
@@ -74,10 +74,10 @@ const docs = [
       analysis: ["Mild hypercholesterolemia detected."],
       recommendations: ["Adopt low-fat diet.", "Retest after 1 month."]
     },
-    url: "https://example.com/file/3",
-    previewUrl: "https://example.com/preview/3",
-    size: "182 KB",
-    updatedAt: "2025-05-20T00:00:00"
+    url: "https://drive.google.com/file/d/1aYqO0bXeK_8rVqAlJybUOF4tWkq1uCPQ/view?usp=drive_link",
+    previewUrl: "https://drive.google.com/file/d/1aYqO0bXeK_8rVqAlJybUOF4tWkq1uCPQ/preview",
+    size: "467 KB",
+    updatedAt: "2025-04-20T00:00:00"
   },
   {
     id: 4,
@@ -91,17 +91,17 @@ const docs = [
       analysis: ["Normal MRI scan; no signs of trauma or lesions."],
       recommendations: ["No immediate action required."]
     },
-    url: "https://example.com/file/4",
-    previewUrl: "https://example.com/preview/4",
-    size: "512 KB",
-    updatedAt: "2025-05-28T00:00:00"
+    url: "https://docs.google.com/document/d/1xZkGD-NUNj-h4winXcLPnXEi80Ilz2Sa/edit?usp=sharing",
+    previewUrl: "https://docs.google.com/document/d/1xZkGD-NUNj-h4winXcLPnXEi80Ilz2Sa/preview",
+    size: "16 KB",
+    updatedAt: "2025-03-28T00:00:00"
   },
   {
     id: 5,
     title: "Liver Function Test - Abhishek",
     type: "pdf",
     patient: "Abhishek Singh",
-    category: "reports",
+    category: "results",
     aiSummary: {
       overview: "LFT showing elevated SGPT and SGOT levels.",
       vitals: [
@@ -111,9 +111,9 @@ const docs = [
       analysis: ["Indicates possible liver inflammation or fatty liver."],
       recommendations: ["Reduce alcohol intake.", "Ultrasound advised."]
     },
-    url: "https://example.com/file/5",
-    previewUrl: "https://example.com/preview/5",
-    size: "204 KB",
+    url: "https://drive.google.com/file/d/19Gbnm1hi-bV2YfI51V4gNXLRBkwgp398/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/19Gbnm1hi-bV2YfI51V4gNXLRBkwgp398/preview",
+    size: "453 KB",
     updatedAt: "2025-06-01T00:00:00"
   },
   {
@@ -128,9 +128,9 @@ const docs = [
       analysis: ["Lung fields are normal.", "No evidence of fluid or mass."],
       recommendations: ["No further action necessary."]
     },
-    url: "https://example.com/file/6",
-    previewUrl: "https://example.com/preview/6",
-    size: "299 KB",
+    url: "https://drive.google.com/file/d/1y4LtjnwKWRywkPEVX_WK5JzGiVYCPHqe/view?usp=sharing",
+    previewUrl: "https://drive.google.com/file/d/1y4LtjnwKWRywkPEVX_WK5JzGiVYCPHqe/preview",
+    size: "117 KB",
     updatedAt: "2025-06-05T00:00:00"
   },
   {
@@ -138,7 +138,7 @@ const docs = [
     title: "ECG Report - Reena",
     type: "jpeg",
     patient: "Reena Mishra",
-    category: "cardiology",
+    category: "reports",
     aiSummary: {
       overview: "ECG shows normal sinus rhythm.",
       vitals: [],
@@ -155,7 +155,7 @@ const docs = [
     title: "Eye Test Report - Kunal",
     type: "pdf",
     patient: "Kunal Das",
-    category: "vision",
+    category: "reports",
     aiSummary: {
       overview: "Visual acuity report for both eyes.",
       vitals: [],
@@ -172,7 +172,7 @@ const docs = [
     title: "Thyroid Report of Sneha",
     type: "docx",
     patient: "Sneha Chatterjee",
-    category: "hormones",
+    category: "results",
     aiSummary: {
       overview: "TSH slightly above normal range.",
       vitals: [
@@ -191,7 +191,7 @@ const docs = [
     title: "CBC Report - Tanmay",
     type: "pdf",
     patient: "Tanmay Dey",
-    category: "reports",
+    category: "results",
     aiSummary: {
       overview: "Complete blood count mostly within range.",
       vitals: [
@@ -229,6 +229,7 @@ const Documents = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchBy, setSearchBy] = useState("all");
   const [sortBy, setSortBy] = useState("nameAsc");
+  const [categoryBy, setCategoryBy] = useState("all");
 
   // console.log(filteredDocs);
   // console.log(searchBy);
@@ -269,9 +270,18 @@ const Documents = () => {
     sizeDec: (a, b) => parseFloat(b.size) - parseFloat(a.size),
   };
 
+  const categoryByOptions = {
+    "all": (doc) => true, // No filtering by category
+    "reports": (doc) => doc.category === "reports",
+    "imaging": (doc) => doc.category === "imaging",
+    "results": (doc) => doc.category === "results",
+  }
+  const categories = ["all", "reports", "imaging", "results"]; // Tab labels
+
   const filteredDocs = docs.filter((doc) =>
     searchByOptions[searchBy](doc) &&
-    (searchQuery ? true : true) // Always true if searchQuery is empty
+    (searchQuery ? true : true) &&
+    categoryByOptions[categoryBy](doc)
   ).sort(
     sortByOptions[sortBy] || sortByOptions.date // Default to date sorting if no sortBy is selected
   );
@@ -329,200 +339,218 @@ const Documents = () => {
         </div>
       </div>
 
-
-
-      {/* Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 p-4">
-        {filteredDocs.length > 0 ? (filteredDocs.map(doc => (
-          <DocumentCard key={doc.id} doc={doc} />
-        ))) : (<div className="text-center py-10 col-span-full">
-          <h3 className="mt-2 text-lg font-medium">No such documents found.</h3>
-        </div>)}
+      {/* Category Filter */}
+      <div className="rounded-md px-1 py-1 dark:bg-slate-700 w-fit">
+        {/* Tabs */}
+        <div className="flex space-x-4">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`px-4 py-2 rounded-lg ${categoryBy === cat
+                  ? "dark:bg-slate-800 bg-slate-300 text-black dark:text-white"
+                  : "text-gray-800 dark:text-gray-100"
+                } transition-all duration-300`}
+              onClick={() => setCategoryBy(cat)}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-1 py-4">
+          {filteredDocs.length > 0 ? (filteredDocs.map(doc => (
+            <DocumentCard key={doc.id} doc={doc} />
+          ))) : (<div className="text-center py-10 col-span-full">
+            <h3 className="mt-2 text-lg font-medium">No such documents found.</h3>
+          </div>)}
+        </div>
+      </div>
+      );
 };
 
 
-const iconMap = {
-  pdf: <FaFilePdf />,
-  docx: <MdOutlineDocumentScanner />,
-  png: <FaFileImage />,
-  jpeg: <FaFileImage />,
-  jpg: <FaFileImage />,
-  default: <MdOutlineDocumentScanner />
+      const iconMap = {
+        pdf: <FaFilePdf />,
+      docx: <MdOutlineDocumentScanner />,
+      png: <FaFileImage />,
+      jpeg: <FaFileImage />,
+      jpg: <FaFileImage />,
+      default: <MdOutlineDocumentScanner />
 };
 
-const DocumentCard = ({ doc }) => {
+      const DocumentCard = ({doc}) => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
+      const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
-  const avatar = doc.patient
-    .split(" ")
+      const avatar = doc.patient
+      .split(" ")
     .map((name) => name[0].toUpperCase())
-    .join("");
+      .join("");
 
-  // format date in dd mm yyyy format
-  function formatDate(isoString) {
+      // format date in dd mm yyyy format
+      function formatDate(isoString) {
     const date = new Date(isoString);
-    const day = String(date.getDate()).padStart(2, '0');      // 2-digit day
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-    const year = date.getFullYear();
+      const day = String(date.getDate()).padStart(2, '0');      // 2-digit day
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+      const year = date.getFullYear();
 
-    return `${day}-${month}-${year}`;
+      return `${day}-${month}-${year}`;
   }
 
-  return (
-    <>
-      {/* Card */}
-      <div className="bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
-        {!!doc.title ? (
-          <div className="flex items-center gap-2">
-            <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
-            <h3 className="text-xl font-semibold text-black dark:text-white truncate text-wrap">{doc.title}</h3>
-          </div>
-        ) : (
-          <h3 className="text-xl font-bold text-blue-800 dark:text-white">Medical Report</h3>
-        )}
-
-        <div className="mt-2 flex items-center gap-2 text-sm text-gray-700">
-          {!!doc.type && <span className="bg-gray-200 px-2 py-1 rounded-md uppercase">{doc.type}</span>}
-          {!!doc.size && <span className="text-black dark:text-white">{doc.size}</span>}
-        </div>
-
-        {!!doc.patient && (
-          <div className="flex items-center gap-3 mt-2">
-            <div className="w-10 h-10 bg-blue-100 text-blue-800 font-bold rounded-full flex items-center justify-center">
-              {avatar}
+      return (
+      <>
+        {/* Card */}
+        <div className="bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
+          {!!doc.title ? (
+            <div className="flex items-center gap-2">
+              <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
+              <h3 className="text-xl font-semibold text-black dark:text-white truncate text-wrap">{doc.title}</h3>
             </div>
-            <span className="text-md font-medium">{doc.patient}</span>
+          ) : (
+            <h3 className="text-xl font-bold text-blue-800 dark:text-white">Medical Report</h3>
+          )}
+
+          <div className="mt-2 flex items-center gap-2 text-sm text-gray-700">
+            {!!doc.type && <span className="bg-gray-200 px-2 py-1 rounded-md uppercase">{doc.type}</span>}
+            {!!doc.size && <span className="text-black dark:text-white">{doc.size}</span>}
           </div>
-        )}
 
-        {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600 dark:text-slate-300'>Updated: {formatDate(doc.updatedAt)}</h3>}
-
-        <div className="flex flex-col min-[400px]:flex-row gap-2 mt-4 justify-around text-sm font-medium">
-          {!!doc.previewUrl &&
-            (<button
-              onClick={() => setIsViewerOpen(true)}
-              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            >
-              <FaEye /> View
-            </button>)
-          }
-
-          {!!doc.url && (
-            <button
-              onClick={() => window.open(doc.url, "_blank", "noopener,noreferrer")}
-              className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-            >
-              <FaDownload className="inline-block" />
-              Download
-            </button>
+          {!!doc.patient && (
+            <div className="flex items-center gap-3 mt-2">
+              <div className="w-10 h-10 bg-blue-100 text-blue-800 font-bold rounded-full flex items-center justify-center">
+                {avatar}
+              </div>
+              <span className="text-md font-medium">{doc.patient}</span>
+            </div>
           )}
 
-          {!!doc.aiSummary && (
-            <button
-              onClick={() => setIsAIAssistantOpen(true)}
-              className="flex items-center gap-1 px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">
-              <RiRobot3Line /> Ask AI
-            </button>
-          )}
-        </div>
-      </div>
+          {!!doc.updatedAt && <h3 className='mt-2 text-sm text-gray-600 dark:text-slate-300'>Updated: {formatDate(doc.updatedAt)}</h3>}
 
-      {/* Viewer Modal */}
-      {isViewerOpen && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg w-[90%] max-w-5xl h-[80vh] overflow-hidden shadow-xl flex flex-col relative">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h2 className="text-lg font-bold text-gray-800">Document Preview</h2>
-              <button
-                onClick={() => setIsViewerOpen(false)}
-                className="text-gray-500 hover:text-red-600 text-lg"
+          <div className="flex flex-col min-[400px]:flex-row gap-2 mt-4 justify-around text-sm font-medium">
+            {!!doc.previewUrl &&
+              (<button
+                onClick={() => setIsViewerOpen(true)}
+                className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
               >
-                <FaTimes />
+                <FaEye /> View
+              </button>)
+            }
+
+            {!!doc.url && (
+              <button
+                onClick={() => window.open(doc.url, "_blank", "noopener,noreferrer")}
+                className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+              >
+                <FaDownload className="inline-block" />
+                Download
               </button>
-            </div>
-            <div className="flex-1 overflow-y-auto">
-              {!!doc.url && (
-                <iframe
-                  src={doc.previewUrl}
-                  className="w-full h-full"
-                ></iframe>
-              )}
-            </div>
+            )}
+
+            {!!doc.aiSummary && (
+              <button
+                onClick={() => setIsAIAssistantOpen(true)}
+                className="flex items-center gap-1 px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">
+                <RiRobot3Line /> Ask AI
+              </button>
+            )}
           </div>
         </div>
-      )}
 
-      {/* AI Assistant */}
-      {
-        isAIAssistantOpen && (
+        {/* Viewer Modal */}
+        {isViewerOpen && (
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg w-[90%] max-w-3xl max-h-screen h-fit overflow-y-auto shadow-xl flex flex-col relative">
+            <div className="bg-white rounded-lg w-[90%] max-w-5xl h-[80vh] overflow-hidden shadow-xl flex flex-col relative">
               <div className="flex justify-between items-center p-4 border-b">
-                <h2 className="text-lg font-bold text-gray-800">AI Assistant</h2>
+                <h2 className="text-lg font-bold text-gray-800">Document Preview</h2>
                 <button
-                  onClick={() => setIsAIAssistantOpen(false)}
+                  onClick={() => setIsViewerOpen(false)}
                   className="text-gray-500 hover:text-red-600 text-lg"
                 >
                   <FaTimes />
                 </button>
               </div>
-              <div className="flex-1 p-4 overflow-y-auto">
-                {!!doc.aiSummary.overview && <p className="text-gray-700 mb-2">{doc.aiSummary.overview}</p>}
-
-                {doc.aiSummary.vitals?.length > 0 && (
-                  <>
-                    <h3 className="font-semibold mb-1">Vitals:</h3>
-                    <ul className="list-disc pl-5 mb-4">
-                      {doc.aiSummary.vitals.map((vital, index) => {
-                        const status = vital.status.toLowerCase(); // Normalize casing
-                        let textColor = "text-gray-700";
-
-                        if (status === "high") textColor = "text-red-600 font-semibold";
-                        else if (status === "low") textColor = "text-blue-600 font-semibold";
-                        else if (status === "normal") textColor = "text-black font-medium";
-
-                        return (
-                          <li key={index} className={textColor}>
-                            {vital.name}: {vital.value} ({vital.status})
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </>
-                )}
-
-                {doc.aiSummary.analysis?.length > 0 && (
-                  <>
-                    <h3 className="font-semibold mb-1">Analysis:</h3>
-                    <ul className="list-disc pl-5 mb-4">
-                      {doc.aiSummary.analysis.map((item, index) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-
-                {doc.aiSummary.recommendations?.length > 0 && (
-                  <>
-                    <h3 className="font-semibold mb-1">Recommendations:</h3>
-                    <ol className="list-decimal pl-5">
-                      {doc.aiSummary.recommendations.map((item, index) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ol>
-                  </>
+              <div className="flex-1 overflow-y-auto">
+                {!!doc.url && (
+                  <iframe
+                    src={doc.previewUrl}
+                    className="w-full h-full"
+                  ></iframe>
                 )}
               </div>
             </div>
           </div>
-        )
-      }
-    </>
-  );
+        )}
+
+        {/* AI Assistant */}
+        {
+          isAIAssistantOpen && (
+            <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+              <div className="bg-white rounded-lg w-[90%] max-w-3xl max-h-screen h-fit overflow-y-auto shadow-xl flex flex-col relative">
+                <div className="flex justify-between items-center p-4 border-b">
+                  <h2 className="text-lg font-bold text-gray-800">AI Assistant</h2>
+                  <button
+                    onClick={() => setIsAIAssistantOpen(false)}
+                    className="text-gray-500 hover:text-red-600 text-lg"
+                  >
+                    <FaTimes />
+                  </button>
+                </div>
+                <div className="flex-1 p-4 overflow-y-auto">
+                  {!!doc.aiSummary.overview && <p className="text-gray-700 mb-2">{doc.aiSummary.overview}</p>}
+
+                  {doc.aiSummary.vitals?.length > 0 && (
+                    <>
+                      <h3 className="font-semibold mb-1 text-gray-700">Vitals:</h3>
+                      <ul className="list-disc pl-5 mb-4">
+                        {doc.aiSummary.vitals.map((vital, index) => {
+                          const status = vital.status.toLowerCase(); // Normalize casing
+                          let textColor = "text-gray-700";
+
+                          if (status === "high") textColor = "text-red-600 font-semibold";
+                          else if (status === "low") textColor = "text-blue-600 font-semibold";
+                          else if (status === "normal") textColor = "text-black font-medium";
+
+                          return (
+                            <li key={index} className={textColor}>
+                              {vital.name}: {vital.value} ({vital.status})
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  )}
+
+                  {doc.aiSummary.analysis?.length > 0 && (
+                    <>
+                      <h3 className="font-semibold mb-1 text-gray-700">Analysis:</h3>
+                      <ul className="list-disc pl-5 mb-4 text-black">
+                        {doc.aiSummary.analysis.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+
+                  {doc.aiSummary.recommendations?.length > 0 && (
+                    <>
+                      <h3 className="font-semibold mb-1 text-gray-700">Recommendations:</h3>
+                      <ol className="list-decimal pl-5 text-black">
+                        {doc.aiSummary.recommendations.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ol>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          )
+        }
+      </>
+      );
 };
 
-export default Documents;
+      export default Documents;

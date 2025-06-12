@@ -184,7 +184,7 @@ const AppointmentCard = ({ appointment }) => {
 
   return (
     <div
-      className={`border border-transparent ${border} ${shadow} ${hoverBg} rounded-lg p-4 mb-4 cursor-pointer hover:shadow-md transition-shadow ${bg} ${text}`}
+      className={`border border-transparent ${border} ${shadow} ${hoverBg} rounded-lg p-4 mb-4 cursor-pointer hover:shadow-xs transition-shadow ${bg} ${text}`}
     >
       <div className="flex items-center gap-4">
         <div className={`p-3 rounded-lg bg-transparent ${text} flex items-center justify-center w-12 h-12`}>
