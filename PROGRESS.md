@@ -217,3 +217,44 @@
    - Add detailed `README.md` with screenshots and instructions
 
 ---
+
+## 🗓️ Date: 13 June 2025
+
+---
+
+## ✅ Completed Work
+
+1. **Page Navigation System:**
+   - Updated the Navigation to properly handle routes
+
+2. **Documents Section Features:**
+   - Updated the dummy JSON array to simulate document entries.
+   - Implemented:
+     - Search by name/keyword
+     - Sort by latest/oldest
+     - Category tabs (All, Lab Results, Imaging, Prescriptions, etc.)
+
+3. **Responsiveness & Interactions:**
+   - Managed card responsiveness across mobile/tablet/desktop
+   - Added smooth hover, tap, and transition effects
+
+4. **Build Document Card Functionality:**
+   - Rendered responsive and animated cards with required data
+   - Ensured **animations on card** using Tailwind utilities and GSAP
+   - Added hover animations using `transition`, `scale`, `shadow`, etc.
+   - Polished layout spacing, alignment, and mobile breakpoints
+
+5. **Bonus Features:**
+   - Floating action button (FAB) for scroll-to-top
+   - Theme toggle (Light/Dark)
+   - Pagination
+   - Modal popup for document view
+
+6. **Final Submission Prep:**
+   - Add detailed `README.md` with screenshots and instructions
+
+## ⚠️ Uncompleted Challenges
+
+1. **Bonus Features:**
+   - Toggle Theme Button Working
+   - Search keyword highlighting

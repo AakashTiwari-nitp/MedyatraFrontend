@@ -1,8 +1,9 @@
-import { React, useState, useEffect } from 'react';
+import { React, useRef, useState, useEffect } from 'react';
 import { FaEye, FaDownload, FaTimes, FaFilePdf, FaFileImage } from "react-icons/fa";
 import { RiRobot3Line } from "react-icons/ri";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
+import { gsap } from 'gsap';
 
 const docs = [
   {
@@ -226,6 +227,9 @@ const docs = [
 ];
 
 const Documents = () => {
+
+  const cardsContainerRef = useRef(null);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [searchBy, setSearchBy] = useState("all");
   const [sortBy, setSortBy] = useState("nameAsc");
@@ -296,6 +300,22 @@ const Documents = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [searchQuery, searchBy, sortBy, categoryBy]);
+
+  useEffect(() => {
+    if (cardsContainerRef.current) {
+      gsap.fromTo(
+        cardsContainerRef.current.querySelectorAll('.document-card'),
+        { opacity: 0.75, x: 25 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.25,
+          stagger: 0.05,
+          ease: 'power4.in'
+        }
+      );
+    }
+  }, [currentDocs]);
 
   return (
     <div className="bg-white dark:bg-gray-700 dark:text-white rounded-lg shadow-md md:p-6 py-6 px-2">
@@ -372,10 +392,12 @@ const Documents = () => {
 
 
       {/* Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-1 py-4">
+      <div
+        ref={cardsContainerRef}
+        className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-1 py-4">
         {currentDocs.length > 0 ? (
           currentDocs.map((doc) => (
-            <DocumentCard key={doc.id} doc={doc} />
+            <DocumentCard key={doc.id} doc={doc} className="document-card" />
           ))
         ) : (
           <div className="text-center py-10 col-span-full">
@@ -429,7 +451,7 @@ const iconMap = {
   default: <MdOutlineDocumentScanner />
 };
 
-const DocumentCard = ({ doc }) => {
+const DocumentCard = ({ doc, className = "" }) => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
@@ -451,7 +473,7 @@ const DocumentCard = ({ doc }) => {
   return (
     <>
       {/* Card */}
-      <div className="bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-xl transition-all border border-gray-200">
+      <div className={`bg-white dark:bg-slate-800 dark:text-white p-4 rounded-2xl shadow hover:shadow-md shadow-gray-700 dark:hover:shadow-gray-300 dark:hover:bg-slate-900 hover:bg-gray-200 transition-all transform border border-gray-200 ${className}`}>
         {!!doc.title ? (
           <div className="flex items-center gap-2">
             <span className='text-2xl'>{iconMap[doc.type] || iconMap.default}</span>
@@ -536,9 +558,9 @@ const DocumentCard = ({ doc }) => {
       {
         isAIAssistantOpen && (
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg w-[90%] max-w-3xl max-h-screen h-fit overflow-y-auto shadow-xl flex flex-col relative">
+            <div className="bg-white dark:bg-gray-700 dark:text-white rounded-lg w-[90%] max-w-3xl max-h-screen h-fit overflow-y-auto shadow-xl flex flex-col relative">
               <div className="flex justify-between items-center p-4 border-b">
-                <h2 className="text-lg font-bold text-gray-800">AI Assistant</h2>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white">AI Assistant</h2>
                 <button
                   onClick={() => setIsAIAssistantOpen(false)}
                   className="text-gray-500 hover:text-red-600 text-lg"
@@ -547,19 +569,19 @@ const DocumentCard = ({ doc }) => {
                 </button>
               </div>
               <div className="flex-1 p-4 overflow-y-auto">
-                {!!doc.aiSummary.overview && <p className="text-gray-700 mb-2">{doc.aiSummary.overview}</p>}
+                {!!doc.aiSummary.overview && <p className="text-gray-700 dark:text-white mb-2">{doc.aiSummary.overview}</p>}
 
                 {doc.aiSummary.vitals?.length > 0 && (
                   <>
-                    <h3 className="font-semibold mb-1 text-gray-700">Vitals:</h3>
+                    <h3 className="font-semibold mb-1 text-gray-700 dark:text-white">Vitals:</h3>
                     <ul className="list-disc pl-5 mb-4">
                       {doc.aiSummary.vitals.map((vital, index) => {
                         const status = vital.status.toLowerCase(); // Normalize casing
                         let textColor = "text-gray-700";
 
-                        if (status === "high") textColor = "text-red-600 font-semibold";
-                        else if (status === "low") textColor = "text-blue-600 font-semibold";
-                        else if (status === "normal") textColor = "text-black font-medium";
+                        if (status === "high") textColor = "text-red-600 dark:text-red-400 font-semibold";
+                        else if (status === "low") textColor = "text-blue-600 dark:text-blue-400 font-semibold";
+                        else if (status === "normal") textColor = "text-black font-medium dark:text-white";
 
                         return (
                           <li key={index} className={textColor}>
@@ -573,8 +595,8 @@ const DocumentCard = ({ doc }) => {
 
                 {doc.aiSummary.analysis?.length > 0 && (
                   <>
-                    <h3 className="font-semibold mb-1 text-gray-700">Analysis:</h3>
-                    <ul className="list-disc pl-5 mb-4 text-black">
+                    <h3 className="font-semibold mb-1 text-gray-700 dark:text-white">Analysis:</h3>
+                    <ul className="list-disc pl-5 mb-4 text-black dark:text-white">
                       {doc.aiSummary.analysis.map((item, index) => (
                         <li key={index}>{item}</li>
                       ))}
@@ -584,8 +606,8 @@ const DocumentCard = ({ doc }) => {
 
                 {doc.aiSummary.recommendations?.length > 0 && (
                   <>
-                    <h3 className="font-semibold mb-1 text-gray-700">Recommendations:</h3>
-                    <ol className="list-decimal pl-5 text-black">
+                    <h3 className="font-semibold mb-1 text-gray-700 dark:text-white">Recommendations:</h3>
+                    <ol className="list-decimal pl-5 text-black dark:text-white">
                       {doc.aiSummary.recommendations.map((item, index) => (
                         <li key={index}>{item}</li>
                       ))}

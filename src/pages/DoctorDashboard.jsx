@@ -166,11 +166,11 @@ const DoctorDashboard = () => {
           {/* Sliding knob */}
           <div
             className={`w-12 h-9 rounded-full z-80 absolute transition-transform duration-500 transform
-      ${isDark
+              ${isDark
                 ? "translate-x-[3rem] bg-slate-500"
                 : "translate-x-0 bg-yellow-400"}
-    `}
-          ></div>
+              `}>
+          </div>
 
           {/* Moon Icon */}
           <span
@@ -183,7 +183,7 @@ const DoctorDashboard = () => {
 
 
         {/* Content */}
-        <div className="w-full max-w-7xl dark:bg-gray-800 dark:text-white bg-opacity-95 rounded-xl min-h-screen shadow-xl p-2 md:px-2 py-12">
+        <div className="w-full max-w-7xl dark:bg-gray-800 dark:text-white bg-opacity-95 rounded-xl min-h-screen shadow-xl p-2 md:px-2 pt-12">
           <Outlet />
         </div>
       </main>

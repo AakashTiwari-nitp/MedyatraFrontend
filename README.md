@@ -16,10 +16,12 @@ MedYatra Doctor Dashboard is a sleek, modern interface designed to help healthca
 - **Vite** — for fast development and build tooling  
 - **TailwindCSS** — for utility-first styling and responsive design  
 - **JavaScript (ES6+)**
+- **GSAP** - for animations
+- **React Icons** - for icons
 
 ---
 
-## 📋 Features (In Progress)
+## 📋 Features
 
 - Document listing with:  
   - Search by name or keyword  
@@ -68,6 +70,16 @@ MedYatra Doctor Dashboard is a sleek, modern interface designed to help healthca
 
 ## 📷 Screenshots
 
-*Add screenshots here once UI components are ready.*
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
+![alt text](image-10.png)
 
+Drive Link of Screen Recordings: [Link](https://drive.google.com/drive/folders/1lQCL_6nYXUsJQLV1h2Q1augQNBkKxgYl?usp=sharing)
 ---
